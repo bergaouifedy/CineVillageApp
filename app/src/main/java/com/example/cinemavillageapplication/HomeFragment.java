@@ -105,7 +105,7 @@ public class HomeFragment extends Fragment implements AnnonceAdapter.ItemClickLi
         }else {
             details = "Categorie: " +annonceModel.getCategorie()+
                     "\n Adresse: " +annonceModel.getAdresse()+
-                    "\n Surface: "+annonceModel.getSurface()+
+                    "\n Surface: "+annonceModel.getSurface()+" m²"+
                     "\n Date d'ajout: " +annonceModel.getDateajout()+
                     "\n Disponibilité: " + dispo;
 

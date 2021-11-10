@@ -79,6 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:cursorVisible="false"
+                        android:inputType="textPassword"
                         android:textColorHighlight="@color/black"
                         android:textColorHint="@color/black"
                         android:textColorLink="@color/black" />

@@ -199,7 +199,7 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
 
         annonceDes.setText(mParam2 + " \n More details: \n" + mParam6);
         annonceAdress.setText(mParam4);
-        annoncePrix.setText(String.valueOf(mParam3));
+        annoncePrix.setText(String.valueOf(mParam3)+" Dt");
         username.setText(mParam5);
         context = getContext();
 
@@ -313,6 +313,11 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
         });
 
         LocalisationModel loc = AppDataBase.getInstance(getContext()).localisationDao().getLocalisationByAnnonce(mParam8);
+        if(loc==null)
+        {
+            localisation.setVisibility(View.INVISIBLE);
+
+        }
         if((user.getRole().equals("Bailleur"))&&(user.getUsername().equals(mParam5))&&(loc ==null))
         {
             AjouterLocalisation.setVisibility(View.VISIBLE);
@@ -366,6 +371,7 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
             adressLocalisation.setText(localisationModel.getAdresse());
             map.addMarker(new MarkerOptions().position(XX)).setTitle(mParam1);
             map.moveCamera(CameraUpdateFactory.newLatLng(XX));
+            map.getMaxZoomLevel();
 
         }
     }

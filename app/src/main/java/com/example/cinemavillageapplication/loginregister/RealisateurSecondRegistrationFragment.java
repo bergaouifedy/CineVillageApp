@@ -74,8 +74,7 @@ public class RealisateurSecondRegistrationFragment extends Fragment {
                 String password = PasswordEditText.getText().toString().trim();
                 String passwordConf = ConfirmpasswordEditText.getText().toString().trim();
                 final String role = "Realisateur";
-                if ((password.equals(passwordConf))
-                        &&(!email.isEmpty())&&(!password.isEmpty())) {
+                if ((password.equals(passwordConf)) &&(!email.isEmpty())&&(!password.isEmpty())) {
                     UserModel user = new UserModel(
                             name,
                             prename,
@@ -89,11 +88,11 @@ public class RealisateurSecondRegistrationFragment extends Fragment {
                             adress
                             );
                     userDao.inserUser(user);
-                    Toast.makeText(RealisateurSecondRegistrationFragment.newInstance().getContext(), "Sign up succedded", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Sign up succedded", Toast.LENGTH_SHORT).show();
                     Intent moveToLogin = new Intent(RealisateurSecondRegistrationFragment.newInstance().getContext(), LoginActivity.class);
                     startActivity(moveToLogin);
                 } else {
-                    Toast.makeText(RealisateurSecondRegistrationFragment.newInstance().getContext(), "Password is not matching", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Vérifier vos inputs", Toast.LENGTH_SHORT).show();
 
                 }
             }

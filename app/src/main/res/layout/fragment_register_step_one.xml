@@ -76,7 +76,7 @@
                         android:backgroundTint="@color/red"
                         android:elevation="@dimen/cardview_default_elevation"
                         android:gravity="center"
-                        android:hint="Bailleur"
+                        android:hint="Propriétaire"
                         android:textColorHint="@color/white"
                         android:textSize="25dp" />
 

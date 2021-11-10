@@ -54,8 +54,8 @@
                     android:id="@+id/username"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="10dp"
+
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="monospace"
                     android:textSize="18sp" />
 
@@ -63,8 +63,7 @@
                     android:id="@+id/signals"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="monospace"
                     android:textSize="18sp" />
 
@@ -72,7 +71,7 @@
                     android:id="@+id/annonce_adress_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="monospace"
                     android:gravity="center"
                     android:textSize="18sp" />
@@ -81,7 +80,7 @@
                     android:id="@+id/annonce_prix_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
+                    android:layout_gravity="center_horizontal"
                     android:fontFamily="monospace"
                     android:gravity="center"
                     android:textSize="18sp" />
@@ -103,51 +102,50 @@
                 android:gravity="center|clip_horizontal"
                 android:padding="15dp"
                 android:text="hhjhj"
-                android:textSize="15dp" />
+                android:textSize="20sp" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/VoirMap"
-                android:layout_width="200dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Voir localisation"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="13sp"
                 app:cornerRadius="20dp" />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/Reserv"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Réserver"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="13sp"
                 app:cornerRadius="20dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signaler"
-                android:layout_width="200dp"
-                android:layout_height="60dp"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Signaler"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="13sp"
                 app:cornerRadius="20dp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/mapcd"
                 android:layout_width="match_parent"
-                android:layout_height="200dp">
+                android:layout_height="200dp"
+                android:layout_margin="10dp"
+                android:elevation="@dimen/default_margin"
+                app:cardCornerRadius="10dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="adress: "/>
                     <TextView
                         android:id="@+id/adressLocalisation"
                         android:layout_width="wrap_content"

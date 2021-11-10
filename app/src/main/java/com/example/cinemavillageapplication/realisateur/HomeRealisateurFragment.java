@@ -121,7 +121,7 @@ public class HomeRealisateurFragment extends Fragment implements AnnonceAdapter.
             details = "Categorie: " +annonceModel.getCategorie()+
                     "\n Adresse: " +annonceModel.getAdresse()+
                     "\n Date d'ajout: " +annonceModel.getDateajout()+
-                    "\n Surface: "+annonceModel.getSurface()+
+                    "\n Surface: "+annonceModel.getSurface()+" m²"+
                     "\n Disponibilité: "+dispo;
         }
         Uri uri = Uri.parse(annonceModel.getImage());

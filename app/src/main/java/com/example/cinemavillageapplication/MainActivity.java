@@ -185,8 +185,8 @@ public class MainActivity extends AppCompatActivity  implements BottomNavigation
             String username = data.getExtras().getString(AddAnnonceActivity.EXTRA_USERNAME);
             String surface = data.getExtras().getString(AddAnnonceActivity.EXTRA_SURFACE);
 
-            Date date = Calendar.getInstance().getTime();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+            Date date = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String strDate = dateFormat.format(date);
 
             annonceViewModel = ViewModelProviders.of(this).get(AnnonceViewModel.class);
