@@ -1,19 +1,24 @@
 package com.example.cinemavillageapplication.annonces;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
@@ -30,6 +35,7 @@ import com.bumptech.glide.Glide;
 import com.example.cinemavillageapplication.R;
 import com.example.cinemavillageapplication.database.AppDataBase;
 import com.example.cinemavillageapplication.loginregister.BailleurSecondRegistrationFragment;
+import com.example.cinemavillageapplication.models.AlbumModel;
 import com.example.cinemavillageapplication.models.AnnonceModel;
 import com.example.cinemavillageapplication.models.LocalisationModel;
 import com.example.cinemavillageapplication.models.ReservationModel;
@@ -47,8 +53,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.zip.InflaterInputStream;
 
@@ -67,11 +75,14 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
     private static final String ARG_PARAM8 = "param8";
     private UserModel user;
 
+    ArrayList<Uri> selectedImagesUri;
+
+    int position = 0;
 
     private Toolbar toolbar;
     private ImageView ImageAnnonce;
-    private TextView annonceDes, annonceAdress, annoncePrix, username, signals,adressLocalisation;
-    private Button reserver, signaler;
+    private TextView annonceDes, annonceAdress, annoncePrix, username, signals, adressLocalisation;
+    private Button reserver, signaler, ajouterAlbum, album;
 
 
     private Button pickDate;
@@ -94,6 +105,8 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
     private String mParam6;
     private String mParam7;
     private int mParam8;
+
+    int SELECT_PICTURE = 200;
 
     GoogleMap map;
     private MapView mapView;
@@ -180,6 +193,17 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
         bookButton = view.findViewById(R.id.book_button);
 
 
+        ajouterAlbum = view.findViewById(R.id.AjoutAlbum);
+        ajouterAlbum.setVisibility(View.INVISIBLE);
+        album = view.findViewById(R.id.album);
+        album.setVisibility(View.INVISIBLE);
+
+
+        AlbumModel albumM = AppDataBase.getInstance(getContext()).albumDao().getAlbumByAnnonce(mParam8);
+        if (albumM != null) {
+            ajouterAlbum.setVisibility(View.INVISIBLE);
+        }
+
         user = (UserModel) getActivity().getIntent().getSerializableExtra("User");
 
         if (user.getRole().equalsIgnoreCase("Bailleur")) {
@@ -199,7 +223,7 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
 
         annonceDes.setText(mParam2 + " \n More details: \n" + mParam6);
         annonceAdress.setText(mParam4);
-        annoncePrix.setText(String.valueOf(mParam3)+" Dt");
+        annoncePrix.setText(String.valueOf(mParam3) + " Dt");
         username.setText(mParam5);
         context = getContext();
 
@@ -217,6 +241,16 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
             signals.setVisibility(View.INVISIBLE);
         }
 
+
+        selectedImagesUri = new ArrayList<>();
+        ajouterAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageChooser();
+            }
+        });
+
+
         AnnonceModel annonceModel = AppDataBase.getInstance(getContext()).annonceDao().getAnnonceByTitle(mParam1);
 
         signaler.setOnClickListener(new View.OnClickListener() {
@@ -231,14 +265,25 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
         localisation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cdMap.getVisibility()==View.INVISIBLE) {
+                if (cdMap.getVisibility() == View.INVISIBLE) {
                     cdMap.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                     cdMap.setVisibility(View.INVISIBLE);
                 }
             }
         });
 
+        AlbumModel albumModel1 = AppDataBase.getInstance(getContext()).albumDao().getAlbumByAnnonce(mParam8);
+        if(albumModel1!=null) {
+            album.setVisibility(View.VISIBLE);
+            album.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    new AlbumPopup(1, getActivity(), getActivity().getSupportFragmentManager(), getContext(), albumModel1).show();
+                }
+            });
+        }
         reserver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -313,19 +358,17 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
         });
 
         LocalisationModel loc = AppDataBase.getInstance(getContext()).localisationDao().getLocalisationByAnnonce(mParam8);
-        if(loc==null)
-        {
+        if (loc == null) {
             localisation.setVisibility(View.INVISIBLE);
 
         }
-        if((user.getRole().equals("Bailleur"))&&(user.getUsername().equals(mParam5))&&(loc ==null))
-        {
+        if ((user.getRole().equals("Bailleur")) && (user.getUsername().equals(mParam5)) && (loc == null)) {
             AjouterLocalisation.setVisibility(View.VISIBLE);
             AjouterLocalisation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
-                    new AjoutLocalisation(getActivity(),getActivity().getSupportFragmentManager(), getContext(),annonceModel).show();
+                    new AjoutLocalisation(getActivity(), getActivity().getSupportFragmentManager(), getContext(), annonceModel).show();
 
 
                 }
@@ -351,6 +394,54 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
         }
     }
 
+    private void imageChooser() {
+        Intent i = new Intent();
+        Bundle bundle = new Bundle();
+
+        i.setType("image/*");
+        i.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+        i.setAction(Intent.ACTION_OPEN_DOCUMENT);
+
+
+        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SELECT_PICTURE) {
+            if (resultCode == getActivity().RESULT_OK) {
+                if (data.getClipData() != null) {
+                    int cout = data.getClipData().getItemCount();
+
+                    for (int i = 0; i < cout; i++) {
+                        Uri imageUri = data.getClipData().getItemAt(i).getUri();
+                        selectedImagesUri.add(imageUri);
+                    }
+                    position = 0;
+                } else {
+
+                    Uri imageUri = data.getData();
+                    selectedImagesUri.add(imageUri);
+                    position = 0;
+
+                }
+
+                ArrayList<String> target = new ArrayList<>();
+                selectedImagesUri.forEach(uri -> target.add(uri.toString()));
+                AlbumModel albumModel = new AlbumModel();
+                albumModel.setAnnonceId(mParam8);
+                albumModel.setImages(target);
+                AppDataBase.getInstance(getContext()).albumDao().insertAlbum(albumModel);
+
+
+            }
+        }
+
+    }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -364,10 +455,10 @@ public class DetailsFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         map = googleMap;
         LocalisationModel localisationModel = AppDataBase.getInstance(getContext()).localisationDao().getLocalisationByAnnonce(mParam8);
-        if(localisationModel!=null) {
+        if (localisationModel != null) {
             Double longtitudeL = localisationModel.getLongitude();
             Double LatitudeL = localisationModel.getLatitude();
-            LatLng XX = new LatLng(longtitudeL,LatitudeL);
+            LatLng XX = new LatLng(longtitudeL, LatitudeL);
             adressLocalisation.setText(localisationModel.getAdresse());
             map.addMarker(new MarkerOptions().position(XX)).setTitle(mParam1);
             map.moveCamera(CameraUpdateFactory.newLatLng(XX));

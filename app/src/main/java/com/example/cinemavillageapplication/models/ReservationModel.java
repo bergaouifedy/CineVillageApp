@@ -31,7 +31,7 @@ public class ReservationModel implements Serializable {
     }
 
 
-    public ReservationModel(int utilisateurId, Date startTime, Date endTime, int annonceId, String etat,String utilisateurUserName,String annonceTitle) {
+    public ReservationModel(int utilisateurId, Date startTime, Date endTime, int annonceId, String etat, String utilisateurUserName, String annonceTitle) {
         this.utilisateurId = utilisateurId;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -115,18 +115,6 @@ public class ReservationModel implements Serializable {
             return false;
     }
 
-    public static class Converters
-    {
 
-        @TypeConverter
-        public static Date fromTimestamp(Long value) {
-            return value == null ? null : new Date(value);
-        }
-
-        @TypeConverter
-        public static Long dateToTimestamp(Date date) {
-            return date == null ? null : date.getTime();
-        }
-
-    }
 }
+

@@ -27,6 +27,14 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/house" />
 
+            <Button
+                android:id="@+id/album"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Album"
+                android:backgroundTint="@color/black"
+                android:layout_gravity="right|bottom"/>
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -244,6 +252,16 @@
             android:layout_height="300dp"
             android:orientation="vertical"
             android:layout_gravity="right">
+            <Button
+                android:id="@+id/AjoutAlbum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Ajouter Album"
+                android:layout_gravity="right"
+                android:backgroundTint="@color/darkGray"
+                android:textColorHint="@color/white"
+                android:elevation="@dimen/default_margin"
+                android:shadowRadius="@integer/material_motion_duration_long_1"/>
         <Button
             android:id="@+id/reservations"
             android:layout_width="wrap_content"

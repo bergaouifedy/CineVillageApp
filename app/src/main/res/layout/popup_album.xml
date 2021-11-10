@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="360dp"
+    android:layout_height="500dp">
+
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Album Photo"
+        android:fontFamily="@font/aclonica"
+        android:textColor="@color/red"
+        android:layout_centerHorizontal="true"
+        android:textSize="24sp"/>
+
+    <ImageSwitcher
+        android:id="@+id/imagesIs"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+
+    <Button
+        android:id="@+id/PreviousBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Précedent"
+        android:layout_below="@id/imagesIs"
+        android:backgroundTint="@color/lightGray"/>
+
+
+    <Button
+        android:id="@+id/NextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Suivant"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/imagesIs"
+        android:backgroundTint="@color/lightGray"/>
+
+
+</RelativeLayout>
