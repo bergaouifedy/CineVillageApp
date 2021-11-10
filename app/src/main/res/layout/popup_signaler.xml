@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="360dp"
+    android:layout_height="500dp"
+    tools:context=".MainActivity">
+
+
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/aclonica"
+            android:text="Signaler"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.051" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="287dp"
+            android:layout_height="364dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.133">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="1dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Annonce : "
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/AnnonceTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="TextView"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="216dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView8"
+                        android:layout_width="102dp"
+                        android:layout_height="wrap_content"
+                        android:text="Raison de signalement : " />
+
+                    <RadioGroup
+                        android:id="@+id/TypeSignalement"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/type1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Faux compte"/>
+
+
+                        <RadioButton
+                            android:id="@+id/type2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Fausse annonce"/>
+
+
+                        <RadioButton
+                            android:id="@+id/type3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Non sérieux"/>
+
+
+                        <RadioButton
+                            android:id="@+id/type4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Annonce non désirable"/>
+
+                    </RadioGroup>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Message" />
+
+                    <EditText
+                        android:id="@+id/messageSignal"
+                        android:layout_width="207dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Votre message"
+                        />
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnSignal"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#009688"
+                    android:hint="Signaler" />
+
+            </LinearLayout>
+
+
+            </ScrollView>
+        </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

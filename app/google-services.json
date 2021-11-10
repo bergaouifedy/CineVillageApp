@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "572664570207",
+    "project_id": "cinemavillageapp",
+    "storage_bucket": "cinemavillageapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:572664570207:android:40aa5709a32d65717116ea",
+        "android_client_info": {
+          "package_name": "com.example.cinemavillageapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "572664570207-rlrnhe351t5v94n257oufibas08h07rv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9N7STuFhrA38kr7NnSqCzrlORK5nt3pM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "572664570207-rlrnhe351t5v94n257oufibas08h07rv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

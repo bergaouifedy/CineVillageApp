@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">Cinema Village v2</string>
+
+    <string name="bottom_home_item">Accueil</string>
+    <string name="bottom_annonces_item">Annonces</string>
+    <string name="bottom_addAsset_item">Ajouter</string>
+    <string name="bottom_profile_item">Profile</string>
+
+    <!-- Page d'accueil-->
+    <string name="home_page_title">A découvrir</string>
+    <string name="home_page_lieux_section">Derniers lieux ajoutés</string>
+
+
+    <!-- Page des lieux-->
+    <string name="lieux_page">Les lieux disponibles</string>
+
+
+    <!-- Page des lieux-->
+    <string name="mes_lieux">Mes annonces</string>
+
+    <string name="navigation_drawer_open">Navigation open</string>
+    <string name="navigation_drawer_close">Navigation close</string>
+
+    <string name="profile_page_title">Votre profile</string>
+
+    <!-- Page d'ajout de lieu-->
+    <string name="add_lieu_page_title">Ajout d\'une annonce</string>
+    <string name="add_lieu_page_upload_button">Charger une image</string>
+    <string name="add_lieu_page_title_lieu_input">@string/item_title_lieu</string>
+    <string name="add_lieu_page_title_description_input">@string/item_description_lieu</string>
+    <string name="add_lieu_page_title_lieu_price_input">Prix</string>
+    <string-array name="add_lieu_page_Category_input">
+        <item>Maison</item>
+        <item>Villa</item>
+        <item>Espace Commercial</item>
+    </string-array>
+    <string-array name="add_lieu_page_title_lieu_TypeTarification_input">
+        <item>Par jour</item>
+        <item>Par semaine</item>
+        <item>Par mois</item>
+    </string-array>
+    <string name="add_lieu_page_title_lieu_adresse_input">Adresse</string>
+    <string name="add_lieu_page_title_lieu_surface_input">Surface</string>
+    <string name="add_lieu_page_title_lieu_postalcode_input">Code postal</string>
+    <string name="add_lieu_page_title_lieu_nbrChambre_input">Nombre des chambres</string>
+    <string name="add_lieu_page_title_lieu_nbrEtages_input">Nombre d\'etages </string>
+
+    <string name="add_lieu_page_confirmer_button">Confirmer</string>
+
+    <!--Pop-up détail -->
+    <string name="popup_lieu_title">Titre du lieu</string>
+    <string name="popup_lieu_description_title">Description</string>
+    <string name="popup_lieu_description_subtitle">Petite Description du lieu</string>
+    <string name="popup_lieu_price_title">Prix</string>
+    <string name="popup_lieu_Prix_subtitle">Prix du lieu</string>
+    <string name="popup_lieu_adresse_title">Adresse</string>
+    <string name="popup_lieu_adresse_subtitle">Adresse du lieu</string>
+
+
+    <!--Lieux customise -->
+    <string name="item_title_lieu">Titre du lieu</string>
+    <string name="item_description_lieu">Description du lieu</string>
+
+
+    <string name="login_email_hint">Email</string>
+    <string name="login_password_hint">Mot de passe</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signaler">Signaler</string>
+    <string name="naviClose">Close</string>
+    <string name="naviOpen">Open</string>
+
+    <string name="room_name_id">%1$s (%2$s)</string>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Accueil" />
+
+        <item
+            android:id="@+id/nav_mesAnnonces"
+            android:icon="@drawable/ic_list"
+            android:title="Mes annonces" />
+
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_add"
+            android:title="dashboard" />
+
+    </group>
+
+
+        <item android:title="Profile">
+            <menu>
+                <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_profile"
+                    android:icon="@drawable/profile_black"
+                    android:title="Profile" />
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/logout"
+                    android:title="Logout" />
+                </group>
+
+            </menu>
+        </item>
+</menu>
