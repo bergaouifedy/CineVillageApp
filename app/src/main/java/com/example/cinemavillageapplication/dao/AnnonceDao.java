@@ -17,6 +17,7 @@ public interface AnnonceDao {
     @Insert
     void insertAnnonce(AnnonceModel annonce);
 
+
     @Update
     void updateAnnonce(AnnonceModel annonce);
 
@@ -35,6 +36,10 @@ public interface AnnonceDao {
 
     @Query("Select * FROM annonces_table WHERE title= :title")
     public AnnonceModel getAnnonceByTitle(String title);
+
+    @Query("Select * FROM annonces_table WHERE id= :id")
+    public AnnonceModel getAnnonceById(int id);
+
 
     @Query("SELECT * FROM annonces_table WHERE username=:username")
     List<AnnonceModel> getUsersAnnonce(String username);

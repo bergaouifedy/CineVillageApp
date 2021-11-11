@@ -6,12 +6,20 @@
     tools:context=".realisateur.HomeRealisateurFragment">
 
 
+    <Button
+        android:id="@+id/NearLocations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voir les annonces à proximité"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyler_annonces"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
         tools:listitem="@layout/item_vertical_asset"/>
 
 

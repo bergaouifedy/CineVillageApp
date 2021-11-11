@@ -25,7 +25,7 @@ public interface LocalisationDao {
     void deleteLocalisation(LocalisationModel Localisation);
 
     @Query("SELECT * FROM localisation_table")
-    LiveData<List<LocalisationModel>> rgetAllLocalisations();
+    List<LocalisationModel> getAllLocalisations();
 
 
     @Query("SELECT * FROM localisation_table WHERE annonceId= :annonceId")

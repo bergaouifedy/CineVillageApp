@@ -7,6 +7,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -17,11 +18,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.cinemavillageapplication.annonces.AnnoncesPres;
 import com.example.cinemavillageapplication.loginregister.LoginActivity;
 import com.example.cinemavillageapplication.loginregister.ProfileFragment;
 import com.example.cinemavillageapplication.models.UserModel;
 import com.example.cinemavillageapplication.realisateur.DashboardRealisateurActivity;
 import com.example.cinemavillageapplication.realisateur.HomeRealisateurFragment;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity2 extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +33,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
+    FloatingActionButton nearLocations;
 
     Button reserver ;
 
@@ -46,6 +50,8 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
+
+
 
 
         setSupportActionBar(toolbar);
@@ -80,6 +86,7 @@ public class MainActivity2 extends AppCompatActivity implements NavigationView.O
         //injecter le fragment dans notre boite (fragment_container)
         getSupportFragmentManager().beginTransaction().setReorderingAllowed(true)
                 .replace(R.id.fragment_container2, fragment, null)
+                .addToBackStack(null)
                 .commit();
     }
 

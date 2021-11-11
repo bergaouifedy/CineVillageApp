@@ -65,7 +65,6 @@
                 app:layout_constraintStart_toStartOf="@id/app_name"
                 app:layout_constraintTop_toBottomOf="@id/app_name" />
             </LinearLayout>
-
         </LinearLayout>
 
         <FrameLayout

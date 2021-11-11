@@ -32,7 +32,7 @@ public class DashboardRealisateurActivity extends AppCompatActivity {
                 Intent intent = new Intent(DashboardRealisateurActivity.this, MainActivity2.class);
                 intent.putExtra("User", user);
                 startActivity(intent);
-                onDestroy();
+
             }
         });
 
@@ -47,8 +47,6 @@ public class DashboardRealisateurActivity extends AppCompatActivity {
                 intent.putExtra("category",category);
                 intent.putExtra("User", user);
                 startActivity(intent);
-                onDestroy();
-
 
             }
         });
@@ -64,8 +62,6 @@ public class DashboardRealisateurActivity extends AppCompatActivity {
                 intent.putExtra("category",category);
                 intent.putExtra("User", user);
                 startActivity(intent);
-                onDestroy();
-
 
             }
         });
@@ -80,8 +76,6 @@ public class DashboardRealisateurActivity extends AppCompatActivity {
                 intent.putExtra("category",category);
                 intent.putExtra("User", user);
                 startActivity(intent);
-                onDestroy();
-
 
             }
         });

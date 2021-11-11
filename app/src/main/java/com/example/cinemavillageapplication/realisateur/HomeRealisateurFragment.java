@@ -20,11 +20,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.cinemavillageapplication.MainActivity2;
 import com.example.cinemavillageapplication.R;
 import com.example.cinemavillageapplication.adapter.AnnonceAdapter;
 import com.example.cinemavillageapplication.annonces.AnnonceViewModel;
+import com.example.cinemavillageapplication.annonces.AnnoncesPres;
 import com.example.cinemavillageapplication.annonces.DetailsFragment;
 import com.example.cinemavillageapplication.database.AppDataBase;
 import com.example.cinemavillageapplication.models.AnnonceModel;
@@ -35,6 +38,7 @@ import java.util.List;
 public class HomeRealisateurFragment extends Fragment implements AnnonceAdapter.ItemClickListener{
 
 
+    Button nearLocations;
     private AnnonceViewModel annonceViewModel;
 
 
@@ -59,7 +63,14 @@ public class HomeRealisateurFragment extends Fragment implements AnnonceAdapter.
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_realisateur, container, false);
+        nearLocations = view.findViewById(R.id.NearLocations);
 
+        nearLocations.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AnnoncesPres(getContext(),getChildFragmentManager()).show();
+            }
+        });
         Bundle extras = getActivity().getIntent().getExtras();
         if(extras.getString("category") == null) {
 
